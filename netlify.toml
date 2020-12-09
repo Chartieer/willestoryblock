@@ -7,5 +7,5 @@
   functions = "out_functions"
   publish   = "out_publish"
 
-# [[plugins]]
-#   package = "netlify-plugin-cache-nextjs"
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
