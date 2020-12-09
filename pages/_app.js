@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import Layout from '../components/Layout';
 
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
+
+
+
 
   useEffect(() => {
     // initGA();
@@ -14,10 +19,20 @@ function MyApp({ Component, pageProps }) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }, []);
+  }, [])
 
 
-  return <Component {...pageProps} />
+
+  return (
+    <Layout>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
+    </Layout>
+  );
 }
 
 export default MyApp
+
+
+

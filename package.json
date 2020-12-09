@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "framer-motion": "^2.9.5",
     "next": "10.0.3",
     "next-on-netlify": "^2.6.3",
     "react": "17.0.1",
