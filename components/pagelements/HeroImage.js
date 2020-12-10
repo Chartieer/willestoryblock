@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     paddingTop: '150px',
-    // transform: 'scale(1.1)'
+
   },
 })
 
@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
 
 const HeroImage = ({ content }) => {
   const classes = useStyles()
-  console.log(content)
+
   return (
     <div className={classes.hero} style={{ backgroundImage: `url(${content.headimage.filename})` }}>
       <h1>{content.name}</h1>

@@ -1,8 +1,20 @@
 import React, { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Layout from '../components/Layout';
+import { ThemeProvider } from 'react-jss'
+import '../styles/globals.css';
 
-import '../styles/globals.css'
+
+
+const theme = {
+  primaryColor: 'green',
+  colorzwei: 'pink',
+
+  willeRed: '#FF4D6F',
+  dunkelGrau: '#141618',
+  industrie: '#19b5fe',
+
+}
 
 function MyApp({ Component, pageProps, router }) {
 
@@ -23,12 +35,18 @@ function MyApp({ Component, pageProps, router }) {
 
 
 
+
+
+
   return (
-    <Layout>
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
-    </Layout>
+
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </Layout>
+    </ThemeProvider>
   );
 }
 
