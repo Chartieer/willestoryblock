@@ -1,8 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import StoryblokService from '../../utils/storyblok-service';
-import { createUseStyles, JssContext, useTheme } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
+import Layout from '../../components/Layout';
+import Page from '../../components/Page';
+import DynamicComponent from '../../components/DynamicComponent';
+import Logo from '../../components/pagelements/Logo';
 
 
 /**
@@ -66,6 +70,22 @@ const useStyles = createUseStyles(theme => ({
     background: theme.colorzwei
   },
 
+  container: {
+    margin: '0 4vw'
+  },
+
+  aboutext: {
+    color: '#fff',
+    fontSize: '14vw',
+    lineHeight: '.11',
+    fontWeight: 600,
+    letterSpacing: '-.04em'
+  },
+
+  right: {
+    textAlign: 'end'
+  }
+
 }))
 
 /**
@@ -74,39 +94,85 @@ const useStyles = createUseStyles(theme => ({
  * @
  */
 const Referenz = (props) => {
+  const [story, setStory] = useState(props.post)
+
   useEffect(() => {
-    StoryblokService.initEditor(this)
-    window.scrollTo(0, 0);
+
+
+
+
+    StoryblokService.initEditorFC(setStory)
+    //window.scrollTo(0, 0);
   }, []);
 
 
   const theme = useTheme()
-  const classes = useStyles({ ...props, theme })
+  const classes = useStyles({ props, theme })
 
   return (
-    <div className="container post">
-      <motion.div initial="exit" animate="enter" exit="exit">
-        <motion.img width="100%" variants={imageVariants} src={props.post.content.headimage.filename} />
+    <Layout>
+      {console.log("STORY", story)}
 
-        <motion.div variants={textVariants}>
-          <h1 className={classes.headline} >loremUt magna incididunt cillum et aliqua enim.</h1>
-          <p>{props.post.text}</p>
-        </motion.div>
+      <div className="container post">
+        <motion.div initial="exit" animate="enter" exit="exit">
+          <motion.img width="100%" variants={imageVariants} src={props.post.content.headimage.filename} />
 
-        <motion.div variants={backVariants}>
-          <Link href="/referenzen">
-            <a>Back to list</a>
-          </Link>
+          <motion.div variants={textVariants}>
+            <h1 className={classes.headline} >loremUt magna incididunt cillum et aliqua enim.</h1>
+            <p>{props.post.text}</p>
+          </motion.div>
+
+          <motion.div variants={backVariants}>
+            <Link href="/referenzen">
+              <a>Back to list</a>
+            </Link>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+
+      {story.content.Body.map((blok) => (
+        <DynamicComponent blok={blok} key={blok._uid} />
+      ))}
+
+      <div data-v-2100d41e="" className={classes.container}>
+        <div data-v-2100d41e="" className="about-description">
+          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper">
+            <Logo />
+            <h3>___</h3>
+            <h1 data-v-2100d41e="" className={`${classes.aboutext} ${classes.right}`}>
+              BODEN
+            </h1>
+          </div>
+          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
+            <h1 data-v-2100d41e="" className={classes.aboutext}>
+              MANUFAKTUR
+            </h1></div><div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
+            <h1 data-v-2100d41e="" className={classes.aboutext}> BASED
+              <span data-v-2100d41e="" className="detail-text" style={{ left: '-140%', color: '#fff' }}>
+
+              </span>
+            </h1>
+          </div>
+          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
+            <h1 data-v-2100d41e="" className={classes.aboutext}>
+              DORTMUND
+            </h1>
+          </div>
+        </div>
+        <div data-v-2100d41e="" className="contact-mail"><a data-v-2100d41e="" href="mailto:hello@klocko.com" target="_blank" rel="noopener" className="view-all-cta"> contact
+          <div data-v-06f4c95b="" data-v-2100d41e="" className="link-wrapper"> hello@Elklocko.com <div data-v-06f4c95b="" className="unerline-wrapper"><span data-v-06f4c95b="" className="underline"></span>
+            <span data-v-06f4c95b="" className="underline"></span>
+          </div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </Layout >
   );
 };
 
 
-Referenz.getInitialProps = async ({ asPath, query }) => {
-
-  StoryblokService.setQuery(query)
+Referenz.getInitialProps = async ({ query, asPath }) => {
 
   let language = query.language || "en"
   let trimDefault = asPath.replace("/en/referenzen", "/referenzen")
@@ -116,7 +182,6 @@ Referenz.getInitialProps = async ({ asPath, query }) => {
   return {
     post,
     language,
-
   }
 };
 

@@ -5,7 +5,7 @@ const FeaturedPosts = ({ blok }) => {
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className="py-8 mb-6 container mx-auto text-left" key={blok._uid}>
-        <div className="relative">
+        {/* <div className="relative">
           <h2 className="relative font-serif text-4xl z-10 text-primary">
             {blok.title}
           </h2>
@@ -33,7 +33,7 @@ const FeaturedPosts = ({ blok }) => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </div>
     </SbEditable>
   );

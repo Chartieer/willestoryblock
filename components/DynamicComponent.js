@@ -3,11 +3,13 @@ import Feature from './Feature'
 import FeaturedPosts from './FeaturedPosts'
 import Grid from './Grid'
 import Placeholder from './Placeholder'
+import Text from './Text';
 
 const Components = {
   'teaser': Teaser,
   'grid': Grid,
   'feature': Feature,
+  'text': Text,
   'featured-posts': FeaturedPosts
 }
 

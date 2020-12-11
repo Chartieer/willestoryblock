@@ -1,30 +1,38 @@
-import DynamicComponent from './DynamicComponent'
-import SbEditable from 'storyblok-react'
-import { createUseStyles } from 'react-jss'
+import DynamicComponent from './DynamicComponent';
+import SbEditable from 'storyblok-react';
+import { createUseStyles, useTheme } from 'react-jss';
 
-const useStyles = createUseStyles({
+/*
+* JSS styles
+**/
+
+const useStyles = createUseStyles(theme => ({
+  headline: {
+    color: '#fff',
+    fontSize: '3rem',
+    background: theme.colorzwei
+  },
+
   main: {
-    backgroundColor: '#232322',
-    border: "33px solid pink"
-  },
+    border: "2px solid green"
+  }
 
-  header: {
-    fontSize: 24,
-    lineHeight: 1.25,
-  },
-})
+}))
 
 
-
-const Page = ({ content }) => {
-  const classes = useStyles()
+const Page = (props) => {
+  const theme = useTheme()
+  const classes = useStyles(null, theme);
+  const { content } = props;
   return (
     < SbEditable content={classes.main} >
+
       <main classes={classes.main}>
         {content.body.map((blok) => (
           <DynamicComponent blok={blok} key={blok._uid} />
         ))}
       </main>
+      yo
     </ SbEditable>
   )
 }

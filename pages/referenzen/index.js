@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import StoryblokService from "../../utils/storyblok-service";
 import PostList from '../../components/pagelements/PostList';
+import Layout from '../../components/Layout';
+import Page from '../../components/Page';
+import SbEditable from 'storyblok-react';
 
 
 let easing = [0.175, 0.85, 0.42, 0.96];
@@ -48,33 +51,45 @@ const backVariants = {
   }
 };
 
-const Post = (props) => {
+const Referenzen = (props) => {
+  const [story, setStory] = useState(props.alles.content)
+
   useEffect(() => {
-    StoryblokService.initEditor(this)
+
+    StoryblokService.initEditorFC(setStory)
     window.scrollTo(0, 0);
   }, []);
 
 
   return (
-    <div className="container">
+    <Layout>
       <PostList posts={props.posts} />
-    </div>
+      {story && <Page content={story} />}
+
+    </Layout>
   );
 };
 
-Post.getInitialProps = async ({ query }) => {
+Referenzen.getInitialProps = async ({ query }) => {
   StoryblokService.setQuery(query);
+
+  let res2 = await StoryblokService.get('cdn/stories/referenzen',
+    {
+      //"resolve_relations": "featured-posts.posts"
+    })
 
   const res = await StoryblokService.get("cdn/stories", {
     starts_with: "referenzen/",
   });
 
 
+
   return {
+    alles: res2.data.story,
     posts: res.data.stories,
   };
 
 
 };
 
-export default Post;
+export default Referenzen;

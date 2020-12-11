@@ -22,16 +22,19 @@ const PostList = ({ posts }) => {
       variants={{ exit: { transition: { staggerChildren: .1 } } }}
     >
       <div className="posts">
+
         {posts.map(post => {
           return (
             <div key={post.id} className="post">
               <motion.div variants={postVariants}>
-                {console.log(post)}
+
                 <Link scroll={false} href={`/referenzen/${post.slug}`} as={`/referenzen/${post.slug}`}>
                   <a>
-                    <motion.div whileHover="hover" variants={{ hover: { scale: 0.96 } }}>
-                      <img src={post.content.headimage.filename} />
-                    </motion.div>
+                    {post.content.headimage &&
+                      <motion.div whileHover="hover" variants={{ hover: { scale: 0.96 } }}>
+                        <img src={post.content.headimage.filename} />
+                      </motion.div>
+                    }
                     <div>{post.title}</div>
                   </a>
                 </Link>

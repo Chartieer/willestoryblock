@@ -4,7 +4,6 @@ import Footer from '../components/Footer'
 import StoryblokService from '../utils/storyblok-service';
 import { createUseStyles } from 'react-jss';
 
-
 const useStyles = createUseStyles({
   page: {
     backgroundColor: '#212122'
