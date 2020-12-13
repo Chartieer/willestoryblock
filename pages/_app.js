@@ -5,14 +5,30 @@ import { ThemeProvider } from 'react-jss'
 import '../styles/globals.css';
 
 
+const willi = '#FF4D6F'
 
 const theme = {
   primaryColor: 'green',
   colorzwei: 'pink',
 
-  willeRed: '#FF4D6F',
+  willeRed: willi,
   dunkelGrau: '#141618',
   industrie: '#19b5fe',
+
+
+  section: {
+    spacing: {
+      large: '20vh 3vw'
+    },
+
+
+    color: {
+      light: '#fff',
+      gray: '#888',
+      red: willi
+
+    }
+  }
 
 }
 

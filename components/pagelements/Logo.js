@@ -12,7 +12,7 @@ const Logo = () => {
   const classes = useStyles()
 
   return (
-    <svg width="79px" height="auto" viewBox="0 0 497 189">
+    <svg width="79px" height="100%" viewBox="0 0 497 189">
       <g transform="matrix(1,0,0,1,-7514.56,-6758.97)">
         <g transform="matrix(0.421706,0,0,0.393335,5836.17,6699.39)">
           <g transform="matrix(2.15419,0,0,25.6489,1793.6,-92808.7)">

@@ -6,8 +6,10 @@ import { createUseStyles, useTheme } from 'react-jss';
 import Layout from '../../components/Layout';
 import Page from '../../components/Page';
 import DynamicComponent from '../../components/DynamicComponent';
-import Logo from '../../components/pagelements/Logo';
-
+import BigBlock from '../../components/pagelements/BigBlock';
+import LargeImage from '../../components/pagelements/LargeImage';
+import HorizontalScroller from '../../components/pagelements/HorizontalScroller';
+import Section from '../../components/pagelements/layout/Section';
 
 /**
  * 
@@ -67,24 +69,10 @@ const useStyles = createUseStyles(theme => ({
   headline: {
     color: '#fff',
     fontSize: '3rem',
-    background: theme.colorzwei
-  },
 
-  container: {
-    margin: '0 4vw'
-  },
-
-  aboutext: {
-    color: '#fff',
-    fontSize: '14vw',
-    lineHeight: '.11',
-    fontWeight: 600,
-    letterSpacing: '-.04em'
-  },
-
-  right: {
-    textAlign: 'end'
   }
+
+
 
 }))
 
@@ -97,12 +85,8 @@ const Referenz = (props) => {
   const [story, setStory] = useState(props.post)
 
   useEffect(() => {
-
-
-
-
     StoryblokService.initEditorFC(setStory)
-    //window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
 
 
@@ -111,7 +95,7 @@ const Referenz = (props) => {
 
   return (
     <Layout>
-      {console.log("STORY", story)}
+
 
       <div className="container post">
         <motion.div initial="exit" animate="enter" exit="exit">
@@ -130,44 +114,17 @@ const Referenz = (props) => {
         </motion.div>
       </div>
 
-      {story.content.Body.map((blok) => (
+      {/* {story.content.Body.map((blok) => (
         <DynamicComponent blok={blok} key={blok._uid} />
-      ))}
+      ))} */}
+      <Section color="red" space="large">
+        <BigBlock />
+      </Section>
+      {/* <HorizontalScroller /> */}
+      <LargeImage />
 
-      <div data-v-2100d41e="" className={classes.container}>
-        <div data-v-2100d41e="" className="about-description">
-          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper">
-            <Logo />
-            <h3>___</h3>
-            <h1 data-v-2100d41e="" className={`${classes.aboutext} ${classes.right}`}>
-              BODEN
-            </h1>
-          </div>
-          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
-            <h1 data-v-2100d41e="" className={classes.aboutext}>
-              MANUFAKTUR
-            </h1></div><div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
-            <h1 data-v-2100d41e="" className={classes.aboutext}> BASED
-              <span data-v-2100d41e="" className="detail-text" style={{ left: '-140%', color: '#fff' }}>
 
-              </span>
-            </h1>
-          </div>
-          <div data-v-2100d41e="" data-scroll="" className="about-text-wrapper is-inview">
-            <h1 data-v-2100d41e="" className={classes.aboutext}>
-              DORTMUND
-            </h1>
-          </div>
-        </div>
-        <div data-v-2100d41e="" className="contact-mail"><a data-v-2100d41e="" href="mailto:hello@klocko.com" target="_blank" rel="noopener" className="view-all-cta"> contact
-          <div data-v-06f4c95b="" data-v-2100d41e="" className="link-wrapper"> hello@Elklocko.com <div data-v-06f4c95b="" className="unerline-wrapper"><span data-v-06f4c95b="" className="underline"></span>
-            <span data-v-06f4c95b="" className="underline"></span>
-          </div>
-          </div>
-        </a>
-        </div>
-      </div>
-    </Layout >
+    </Layout>
   );
 };
 
