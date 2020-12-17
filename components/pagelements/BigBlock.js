@@ -21,7 +21,7 @@ const useStyles = createUseStyles(theme => ({
     fontWeight: 600,
     letterSpacing: '-.065em',
     position: 'relative',
-    transition: 'top 1.4s cubic-bezier(.215,.61,.55,.1123)',
+    transition: 'top 1.2s cubic-bezier(.5,.61,.55,.93)',
     top: '500px',
     textTransform: 'uppercase',
     overflow: 'visible',
@@ -45,8 +45,9 @@ const useStyles = createUseStyles(theme => ({
   },
 
   linkWrapper: {
-    fontSize: '2.12rem',
-    letterSpacing: '-.02em',
+    fontSize: '2vw',
+    padding: '0 .5vw',
+    letterSpacing: '-.005em',
 
 
     '& a': {
@@ -69,7 +70,7 @@ const BigBlock = (props) => {
   const { ref, inView, scrollDirection, entry, observe, unobserve } = useInView(
     {
       threshold: 0.25, // Default is 0
-      unobserveOnEnter: true,
+      // unobserveOnEnter: true,
       // onChange: ({ inView, scrollDirection, entry, observe, unobserve }) => {
       //   // Triggered whenever the target meets a threshold, e.g. [0.25, 0.5, ...]
       // },
@@ -106,7 +107,7 @@ const BigBlock = (props) => {
           <h1 className={`${classes.aboutext} ${inView && classes.inview}`}> Experten
               <span className={classes.linkWrapper} style={{ left: '-140%', color: '#fff' }}>
               <a href="mailto:hello@klocko.com" target="_blank" rel="noopener" className="view-all-cta">
-                contact
+                Wir beraten Sie gern
                 </a>
             </span>
           </h1>

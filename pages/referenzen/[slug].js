@@ -10,6 +10,10 @@ import BigBlock from '../../components/pagelements/BigBlock';
 import LargeImage from '../../components/pagelements/LargeImage';
 import HorizontalScroller from '../../components/pagelements/HorizontalScroller';
 import Section from '../../components/pagelements/layout/Section';
+import Grid from '../../components/pagelements/grid'
+import Paragraph from '../../components/pagelements/Paragraph';
+
+
 
 /**
  * 
@@ -70,11 +74,14 @@ const useStyles = createUseStyles(theme => ({
     color: '#fff',
     fontSize: '3rem',
 
+
   }
 
 
 
 }))
+
+
 
 /**
  * Referenz Page
@@ -102,8 +109,8 @@ const Referenz = (props) => {
           <motion.img width="100%" variants={imageVariants} src={props.post.content.headimage.filename} />
 
           <motion.div variants={textVariants}>
-            <h1 className={classes.headline} >loremUt magna incididunt cillum et aliqua enim.</h1>
-            <p>{props.post.text}</p>
+            {/* <h1 className={classes.headline} >loremUt magna incididunt cillum et aliqua enim.</h1>
+            <p>{props.post.text}</p> */}
           </motion.div>
 
           <motion.div variants={backVariants}>
@@ -113,11 +120,25 @@ const Referenz = (props) => {
           </motion.div>
         </motion.div>
       </div>
+      <Section color="" space="medium">
+        <Grid>
+          <Grid.Row>
+            <Grid.Col sm="12" md="4" lg="4">Deserunt  aute duis nostrud proident consectetur ulelit esse ad laboris fugiat nisi reprehenderit consequat sit ipsum irure eiusmod.</Grid.Col>
+            <Grid.Col md="8" lg="8"><Paragraph>Labore velit reprehenderit minim in qui magna nisi pariatur enim fugiat. Voluptate incididunt id commodo id aliqua consequat veniam ex duis nostrud aute ut pariatur mollit. Aliqua nisi culpa elit enim dolor ipsum adipisicing dolor culpa occaecat ullamco.</Paragraph></Grid.Col>
 
+          </Grid.Row>
+
+
+          <Grid.Row md="3">
+            2
+          </Grid.Row>
+
+        </Grid>
+      </Section>
       {/* {story.content.Body.map((blok) => (
         <DynamicComponent blok={blok} key={blok._uid} />
       ))} */}
-      <Section color="red" space="large">
+      <Section color="" space="large">
         <BigBlock />
       </Section>
       {/* <HorizontalScroller /> */}

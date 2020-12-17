@@ -14,7 +14,7 @@ const useStyles = createUseStyles((theme) => ({
 
   spacing: (props) => ({
 
-    padding: theme.section.spacing.large
+    padding: theme.section.spacing[props.space]
   }),
 
 
