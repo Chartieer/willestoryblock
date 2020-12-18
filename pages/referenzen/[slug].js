@@ -74,7 +74,6 @@ const useStyles = createUseStyles(theme => ({
     color: '#fff',
     fontSize: '3rem',
 
-
   }
 
 
@@ -124,7 +123,7 @@ const Referenz = (props) => {
         <Grid>
           <Grid.Row>
             <Grid.Col sm="12" md="4" lg="4">Deserunt  aute duis nostrud proident consectetur ulelit esse ad laboris fugiat nisi reprehenderit consequat sit ipsum irure eiusmod.</Grid.Col>
-            <Grid.Col md="8" lg="8"><Paragraph>Labore velit reprehenderit minim in qui magna nisi pariatur enim fugiat. Voluptate incididunt id commodo id aliqua consequat veniam ex duis nostrud aute ut pariatur mollit. Aliqua nisi culpa elit enim dolor ipsum adipisicing dolor culpa occaecat ullamco.</Paragraph></Grid.Col>
+            <Grid.Col md="8" lg="8"><Paragraph small>Labore velit reprehenderit minim in qui magna nisi pariatur enim fugiat. Voluptate incididunt id commodo id aliqua consequat veniam ex duis nostrud aute ut pariatur mollit. Aliqua nisi culpa elit enim dolor ipsum adipisicing dolor culpa occaecat ullamco.</Paragraph></Grid.Col>
 
           </Grid.Row>
 

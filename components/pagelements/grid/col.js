@@ -7,6 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+// @todp
+// OFFSET
+// Start, Center, End, middle, bottom, arround, between, firs, last
+
+
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import theme from '../../../styles/theme';
@@ -27,23 +32,45 @@ const generateCol = (breakpoint, col) => {
   return columns
 }
 
-
 const generateColBreak = (breakpoint) => {
   let columns = {}
 
   theme.grid.sizes.map((size) => {
     columns[`col_${breakpoint}_${size}`] = {
-
-
       maxWidth: `${Math.round((size / 12) * 10e7) / 10e5}%`,
       flexBasis: `${Math.round((size / 12) * 10e7) / 10e5}%`,
-
     }
   })
 
   return columns
 }
 
+const breakpoints = () => {
+  let breakpoints = {
+
+    // ...breakpointCol('sm', '400px', 'red'),
+    // ...breakpointCol('md', '600px', 'red'),
+    // ...breakpointCol('lg', '800px', 'green'),
+    // ...breakpointCol('xl', '1000px', 'yellow'),
+  }
+
+
+  for (const [key, value] of Object.entries(theme.grid.breakpoints)) {
+
+    breakpoints = Object.assign(breakpoints,
+      {
+        ...generateCol(key),
+
+        [[`@media only screen and (min-width: ${value})`]]: {
+          ...generateColBreak(key),
+        },
+      }
+    )
+  }
+
+
+  return breakpoints;
+};
 
 const breakpointCol = (breakpoint, width, color) => {
 
@@ -72,10 +99,11 @@ const useStyles = createUseStyles((theme) => (
       maxWidth: '100%'
     },
 
-    ...breakpointCol('sm', '400px', 'red'),
-    ...breakpointCol('md', '600px', 'red'),
-    ...breakpointCol('lg', '800px', 'green'),
-    ...breakpointCol('xl', '1000px', 'yellow'),
+    reverse: {
+      flexDirection: 'column-reverse'
+    },
+
+    ...breakpoints()
 
 
   }), { name: 'Grid' })
