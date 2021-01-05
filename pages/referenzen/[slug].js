@@ -9,7 +9,7 @@ import DynamicComponent from '../../components/DynamicComponent';
 import BigBlock from '../../components/pagelements/BigBlock';
 import LargeImage from '../../components/pagelements/LargeImage';
 import HorizontalScroller from '../../components/pagelements/HorizontalScroller';
-import Section from '../../components/pagelements/layout/Section';
+import Section from '@ui/layout/Section';
 import Grid from '../../components/pagelements/grid'
 import Paragraph from '../../components/pagelements/Paragraph';
 
@@ -74,8 +74,17 @@ const useStyles = createUseStyles(theme => ({
     color: '#fff',
     fontSize: '3rem',
 
-  }
+  },
 
+  dummy: {
+    backgroundColor: 'pink',
+    padding: '0.8em',
+    marginTop: '0.8em'
+  },
+
+  high: {
+    lineHeight: '22em'
+  }
 
 
 }))
@@ -129,7 +138,44 @@ const Referenz = (props) => {
 
 
           <Grid.Row md="3">
-            2
+            <Grid.Col sm="3" offset_sm="9"><div className={classes.dummy}>off</div></Grid.Col>
+          </Grid.Row>
+
+          <Grid.Row md="3">
+            <Grid.Col ><div className={classes.dummy}>auto</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>auto</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>auto</div></Grid.Col>
+
+          </Grid.Row>
+
+          <Grid.Row md="3">
+            <Grid.Col ><div className={classes.dummy}>1</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>2</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>3</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>4</div></Grid.Col>
+            <Grid.Col first_sm><div className={classes.dummy}>5</div></Grid.Col>
+
+          </Grid.Row>
+
+          <Grid.Row md="3" reverse>
+            <Grid.Col ><div className={classes.dummy}>1</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>2</div></Grid.Col>
+            <Grid.Col ><div className={classes.dummy}>3</div></Grid.Col>
+
+          </Grid.Row>
+
+          <Grid.Row md="3" bottom_lg>
+            <Grid.Col sm="4" md="4"><div className={`${classes.dummy} ${classes.high}`}>high</div></Grid.Col>
+            <Grid.Col sm="4" md="4"><div className={classes.dummy}>2</div></Grid.Col>
+            <Grid.Col sm="4" md="4"><div className={classes.dummy}>3</div></Grid.Col>
+
+          </Grid.Row>
+
+          <Grid.Row md="3" center_lg end_md start_xl>
+
+            <Grid.Col sm="6"><div className={classes.dummy}>Senta</div></Grid.Col>
+
+
           </Grid.Row>
 
         </Grid>

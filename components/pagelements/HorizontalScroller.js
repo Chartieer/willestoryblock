@@ -5,14 +5,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { createUseStyles, useTheme } from 'react-jss';
 
 
-
-const useStyles = createUseStyles({
+const _Name = "hscroller"
+const useStyles = createUseStyles(theme => ({
 
 
   sticky: {
     position: 'sticky',
     top: '0',
-    height: '80vh',
+    height: '100vh',
     width: '100%',
     overflowX: 'hidden'
   },
@@ -20,28 +20,31 @@ const useStyles = createUseStyles({
 
   card: {
     position: 'relative',
-    height: '80%',
-    width: '500px',
-    backgroundColor: '#111f30',
+    height: '320px',
+    width: '320px',
+    backgroundColor: 'none',
+    border: '1px solid #fff',
     marginRight: '75px',
-    flexShrink: '0'
+    alignSelf: 'center',
+    flexShrink: '0',
+
   },
 
   cardscontainer: {
     position: 'relative',
     height: '100%',
-    padding: '0 0 0 150px',
+    padding: '0 0 0 50px',
     display: 'flex',
     flexFlow: 'row nowrap',
     justifyContent: 'flex-center',
     alignItems: 'center',
   }
-})
+}), { name: _Name })
 
 
-const useStyler = createUseStyles({
+const useStyler = createUseStyles(theme => ({
   wrapper: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.dark,
     height: props => props.dynamicHeight,
     position: 'relative',
     width: '100%'
@@ -53,7 +56,7 @@ const useStyler = createUseStyles({
     height: '100%',
     willChange: 'transform',
   },
-})
+}), { name: _Name })
 
 
 
@@ -65,7 +68,6 @@ const TallOuterContainer = (props) => {
     <div className={classes.wrapper}>{props.children}</div>
   )
 };
-
 
 
 const StickyInnerContainer = React.forwardRef((props, ref) => {
@@ -115,7 +117,6 @@ const SampleCards = React.memo(() =>
 );
 
 
-
 const calcDynamicHeight = objectWidth => {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
@@ -141,7 +142,7 @@ const applyScrollListener = (ref, setTranslateX) => {
 
 
 
-const Main = ({ children }) => {
+const HScroller = ({ children }) => {
   const [dynamicHeight, setDynamicHeight] = useState(null);
   const [translateX, setTranslateX] = useState(0);
 
@@ -178,4 +179,5 @@ const Main = ({ children }) => {
   );
 };
 
-export default Main
+export default HScroller
+

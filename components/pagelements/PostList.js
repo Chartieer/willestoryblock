@@ -46,7 +46,6 @@ const PostList = ({ posts }) => {
                 </Grid.Col>
               );
             })}
-
           </Grid.Row>
         </Grid>
 

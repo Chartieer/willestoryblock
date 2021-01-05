@@ -29,6 +29,11 @@ const useStyles = createUseStyles({
       listStyle: 'none',
     },
 
+    '& li': {
+      display: 'inline-flex',
+      padding: '12px'
+    },
+
     '& a': {
       color: '#fff',
       textDecoration: 'none'
@@ -49,6 +54,14 @@ const Navigation = ({ language }) => {
         <ul>
           <li>
             <a href="/referenzen">referenzen</a>
+          </li>
+
+          <li>
+            <a href="/wille">wille</a>
+          </li>
+
+          <li>
+            <a href="/manufaktur">manufaktur</a>
           </li>
         </ul>
       </nav>

@@ -31,11 +31,9 @@ function MyApp({ Component, pageProps, router }) {
   return (
 
     <ThemeProvider theme={theme}>
-      <Layout>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
-      </Layout>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
     </ThemeProvider>
   );
 }

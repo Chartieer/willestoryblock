@@ -9,8 +9,31 @@
 
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
+import theme from '../../../styles/theme';
 
 
+const breakpoints = () => {
+  let breakpoints = {}
+
+
+  for (const [key, value] of Object.entries(theme.grid.breakpoints)) {
+
+    breakpoints = Object.assign(breakpoints,
+      {
+
+
+        [[`@media only screen and (min-width: ${value})`]]: {
+          container: {
+            width: `${theme.grid.container[key]}`
+          }
+        },
+      }
+    )
+  }
+
+
+  return breakpoints;
+};
 
 const useStyles = createUseStyles((theme) => (
   {
@@ -19,27 +42,13 @@ const useStyles = createUseStyles((theme) => (
       marginRight: 'auto',
       marginLeft: 'auto',
     },
-    '@media only screen and (min-width: 48em)': {
-      container: {
-        // FIXME this needs is a problem with a layout with drawer
-        // May be use 80%?
-        width: '49rem',
-      },
+
+    fluid: {
+      paddingLeft: theme.grid.outerMargin,
+      paddingRight: theme.grid.outerMargin,
     },
-    '@media only screen and (min-width: 64em)': {
-      container: {
-        // FIXME this needs is a problem with a layout with drawer
-        // May be use 80%?
-        width: '65rem',
-      },
-    },
-    '@media only screen and (min-width: 75em)': {
-      container: {
-        // FIXME this needs is a problem with a layout with drawer
-        // May be use 80%?
-        width: '76rem',
-      },
-    },
+
+    ...breakpoints()
   }
 ), { name: 'Grid' })
 

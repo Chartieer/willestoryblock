@@ -2,29 +2,32 @@ import Head from '../components/Head'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import StoryblokService from '../utils/storyblok-service';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles(theme => ({
   page: {
-    backgroundColor: '#212122'
+    backgroundColor: theme.dunkelGrau
   },
 
 
 
-})
+}))
 
 
-const Layout = ({ children }) => {
-  const classes = useStyles();
+const Layout = ({ children, ...props }) => {
+
+  let { template } = props;
+
+  const theme = useTheme()
+  const classes = useStyles({}, theme);
+
+
   return (
 
-
-
-
-    < div className={classes.page} >
-      <Head />
-      <Navigation />
-      { children}
+    <div className={classes.page} >
+      <Head template />
+      <Navigation template />
+      <main>{children}</main>
       <Footer />
       { StoryblokService.bridge()}
     </div >

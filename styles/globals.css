@@ -350,3 +350,12 @@ template {
 [hidden] {
   display: none;
 }
+
+
+
+@keyframes useRippleAnimation {
+  to {
+    transform: scale(15);
+    opacity: 0;
+  }
+}

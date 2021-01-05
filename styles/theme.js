@@ -1,24 +1,28 @@
 
-const willi = '#FF4D6F'
+const willi = '#FF4F58'
 
 const theme = {
-  primaryColor: 'green',
-  colorzwei: 'pink',
 
-  willeRed: willi,
-  dunkelGrau: '#141618',
-  industrie: '#19b5fe',
+  dunkelGrau: '#212122',
 
+  stein: '#F0EEED',
+  marmor: '#BEC3C3',
+  white: '#fff',
+  brand: '#FF4F58',
 
   section: {
     spacing: {
-      large: '21vh 3vw'
+      sm: '5vh 0',
+      l: '12vh 0',
+      xl: '20vh 0'
     },
 
 
     color: {
       light: '#fff',
       gray: '#888',
+
+      wille: '#FF4F58',
       red: willi
     }
   },
@@ -27,13 +31,24 @@ const theme = {
 
   // Grid
   grid: {
-    gutter: '12px',
+    gutter: '10px',
+    columngutter: '20px',
+    outerMargin: '2rem',
+
+    container: {
+      sm: '100%',
+      md: '100',
+      lg: '90%',
+      xl: '70vw',
+
+    },
+
     sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     breakpoints: {
-      sm: '200px',
-      md: '400px',
-      lg: '800px',
-      xl: '1000px'
+      sm: '400px',
+      md: '800px',
+      lg: '1000px',
+      xl: '1300px'
     }
 
   }

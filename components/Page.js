@@ -26,9 +26,7 @@ const Page = (props) => {
   const { content } = props;
   return (
     < SbEditable content={classes.main} >
-
       <main classes={classes.main}>
-
         {content.body.map((blok) => (
           <DynamicComponent blok={blok} key={blok._uid} />
         ))}

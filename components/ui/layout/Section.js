@@ -1,7 +1,7 @@
 //import DynamicComponent from './DynamicComponent'
 import SbEditable from 'storyblok-react';
 import { createUseStyles } from 'react-jss';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { useTheme } from 'react-jss';
 
 const _Name = 'section';
@@ -28,13 +28,14 @@ const useStyles = createUseStyles((theme) => ({
 
 
 const Section = (props) => {
-  const { color, space, children } = props
+  const { color, space, children, className } = props
   const theme = useTheme()
   const classes = useStyles({ ...props, theme })
 
-  const section_classes = classNames(classes.main, {
+  const section_classes = clsx(classes.main, {
     [classes.background]: props.color || null,
-    [classes.spacing]: props.space || null
+    [classes.spacing]: props.space || null,
+    [props.className]: props.className != 'undefined'
 
   })
 
