@@ -1,7 +1,7 @@
 /**
  * react-flexbox-grid-jss
  *
- * Copyright © 2017 Zetoff, Pol Guixe. All rights reserved.
+ * Copyright © 2021 chartier, Pol Guixe. All rights reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import theme from '../../../styles/theme';
+import theme from '@styles/theme';
 
 
 const breakpoints = () => {

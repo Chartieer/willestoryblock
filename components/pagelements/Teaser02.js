@@ -4,7 +4,7 @@ import SbEditable from "storyblok-react";
 
 import { createUseStyles } from 'react-jss';
 import clsx from 'clsx';
-import Grid from './grid';
+import Grid from '@ui/layout/grid';
 
 
 //https://github.com/lalomts/flexgrid-js/blob/master/src/flexgrid.js

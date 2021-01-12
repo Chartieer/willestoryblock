@@ -13,6 +13,7 @@ const theme = {
   section: {
     spacing: {
       sm: '5vh 0',
+      md: '8vh',
       l: '12vh 0',
       xl: '20vh 0'
     },

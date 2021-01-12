@@ -1,7 +1,7 @@
 //import DynamicComponent from './DynamicComponent'
 import SbEditable from 'storyblok-react'
 import { createUseStyles, useTheme } from 'react-jss'
-import Grid from './grid';
+import Grid from '@ui/layout/grid';
 import Section from '@ui/layout/Section';
 import color from 'color';
 import { motion } from 'framer-motion';
@@ -47,25 +47,9 @@ const useStyles = createUseStyles(theme => ({
   },
 
 
-  h3_light: {
-    color: theme.white,
-    fontWeight: 200,
-    fontSize: 'calc(24px + (32 - 24) * ((100vw - 300px) / (1000 - 300)))'
-
-  },
 
 
-  red: {
-    "& p": {
-      color: color(theme.brand).darken(0.75).hex(),
 
-      fontWeight: 400,
-      lineHeight: 1.5,
-      fontSize: 'calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)))'
-      //  font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
-    }
-
-  }
 
 }), { name: _Name })
 
@@ -123,12 +107,12 @@ const Lala = ({ content, ...props }) => {
 
       </Section>
 
-      <Section>
-        <Parallax>
 
-        </Parallax>
-      </Section>
-      <Section space="sm" color="red" className={classes.red}>
+      <Parallax>
+
+      </Parallax>
+
+      {/* <Section space="sm" color="red" className={classes.red}>
         <Grid>
           <Grid.Row>
             <Grid.Col sm="8" md="8">
@@ -145,7 +129,7 @@ const Lala = ({ content, ...props }) => {
           </Grid.Row>
         </Grid>
 
-      </Section>
+      </Section> */}
 
     </>
   )

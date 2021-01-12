@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Grid from './grid';
+import Grid from '@ui/layout/grid';
 
 const postVariants = {
   initial: { scale: 0.00006, y: 230, opacity: 0 },

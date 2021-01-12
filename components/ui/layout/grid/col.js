@@ -14,7 +14,7 @@
 
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import theme from '../../../styles/theme';
+import theme from '@styles/theme';
 import clsx from 'clsx';
 
 

@@ -1,14 +1,16 @@
 //import DynamicComponent from './DynamicComponent'
 import SbEditable from 'storyblok-react'
-import { createUseStyles } from 'react-jss'
+import { createUseStyles, useTheme } from 'react-jss'
 
 const _Name = 'logo';
 
 const useStyles = createUseStyles(theme => ({
-  wille: {
-    fill: theme.white,
-    fillRule: 'nonzero'
-  },
+  wille: (props) => ({
+    fill: props.color ?? theme.dark,
+    fillRule: 'nonzero',
+    width: '23px'
+  }),
+
 
   dot: {
     fill: theme.brand,
@@ -20,9 +22,13 @@ const useStyles = createUseStyles(theme => ({
 
 
 
+
+
 const Logo = (props) => {
-  const theme = useStyles()
-  const styles = useStyles(props, theme)
+
+
+  const theme = useTheme()
+  const styles = useStyles({ ...props, theme })
 
 
   return (

@@ -22,7 +22,7 @@ const Manufaktur = (props) => {
     <Layout template="gray">
       <Lala />
       <HScroller />
-      <div style={{ height: "8200px" }}>
+      <div style={{ height: "1200px" }}>
 
       </div>
     </Layout>

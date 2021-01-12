@@ -137,8 +137,8 @@ const Referenz = (props) => {
           </Grid.Row>
 
 
-          <Grid.Row md="3">
-            <Grid.Col sm="3" offset_sm="9"><div className={classes.dummy}>off</div></Grid.Col>
+          <Grid.Row>
+            <Grid.Col sm="3" offset_sm="9" md="4" offset_md="8"><div className={classes.dummy}>off</div></Grid.Col>
           </Grid.Row>
 
           <Grid.Row md="3">
@@ -148,7 +148,7 @@ const Referenz = (props) => {
 
           </Grid.Row>
 
-          <Grid.Row md="3">
+          <Grid.Row>
             <Grid.Col ><div className={classes.dummy}>1</div></Grid.Col>
             <Grid.Col ><div className={classes.dummy}>2</div></Grid.Col>
             <Grid.Col ><div className={classes.dummy}>3</div></Grid.Col>

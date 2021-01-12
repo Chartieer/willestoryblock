@@ -3,15 +3,22 @@ import SbEditable from 'storyblok-react';
 import { createUseStyles } from 'react-jss';
 import clsx from 'clsx';
 import { useTheme } from 'react-jss';
-import React, { useLayoutEffect, useState, useRef } from 'react';
+
+import color from 'color';
+
+import React, { useLayoutEffect, useState } from 'react';
 
 
-import { useInView } from 'react-intersection-observer';
 import {
   useViewportScroll,
   motion,
   useTransform,
 } from 'framer-motion';
+
+
+import useAnimateInViewPort from '@hooks/useAnimateInViewPort';
+import Grid from '@ui/layout/grid';
+import Section from './Section';
 
 
 const _Name = 'parallax';
@@ -23,46 +30,44 @@ const useStyles = createUseStyles((theme) => ({
     background: 'red'
   },
 
-  green: {
-    background: 'green'
-  }
+  red: {
+    "& p": {
+      color: color(theme.brand).darken(0.75).hex(),
+
+      fontWeight: 400,
+      lineHeight: 1.5,
+      fontSize: 'calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)))'
+      //  font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+    }
+
+  },
+
+  h3_light: {
+    color: theme.white,
+    fontWeight: 200,
+    fontSize: 'calc(24px + (32 - 24) * ((100vw - 300px) / (1000 - 300)))'
+
+  },
+
 }
 ), { name: _Name })
 
 
 const Parallax = (props) => {
 
-  const { scrollY, scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useViewportScroll();
 
+  const { ref, start, end } = useAnimateInViewPort();
 
-
-  const [start, setStart] = useState(null);
-  const [end, setEnd] = useState(null);
 
   const scale = useTransform(scrollYProgress, [start, end], [0.25, 2]);
 
-  const y1 = useTransform(scrollYProgress, [start, end], [0.25, -332]);
-  const ref = useRef();
-
-
-  //574
+  const y1 = useTransform(scrollYProgress, [start, end], [0
+    , '-500']);
 
 
 
-  useLayoutEffect(() => {
-    if (!ref.current) {
-      return;
-    }
 
-
-    const rect = ref.current.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const offsetTop = rect.top + scrollTop;
-
-    setStart((offsetTop - window.innerHeight) / (document.body.clientHeight - window.innerHeight))
-    setEnd(offsetTop / (document.body.clientHeight - window.innerHeight));
-
-  });
 
 
 
@@ -83,17 +88,27 @@ const Parallax = (props) => {
 
 
   return (
-    <section className={section_classes} ref={ref}>
+    <motion.div
+      initial={{ y: -500 }}
+      style={{ y: y1 }} ref={ref}>
+      <Section space="md" color="red" className={classes.red}>
+        <Grid>
+          <Grid.Row>
+            <Grid.Col sm="8" md="8">
+              <h3 className={classes.h3_light}>
+                In diese Spiel es waren zwei, drei diese Spieler waren schwach wie eine Flasche leer!
+      </h3>
+            </Grid.Col>
 
-      <motion.div
-        className={classes.box}
-        style={{ scale, x: 100, y: y1 }}
-      />
-      <motion.div
-        className={classes.box}
-        style={{ scale, x: 400 }}
-      />
-    </section>
+            <Grid.Col sm="10" offset_sm="2">
+              <p>
+                Letzte Spiel hatten wir in Platz drei Spitzen: Elber, Jancka und dann Zickler. Wir müssen nicht vergessen Zickler. Zickler ist eine Spitzen mehr, Mehmet eh mehr Basler. Ist klar diese Wörter, ist möglich verstehen, was ich hab gesagt? Danke. Offensiv, offensiv ist wie machen wir in Platz. Zweitens: ich habe erklärt mit diese zwei Spieler: nach Dortmund brauchen vielleicht Halbzeit Pause. Ich habe auch andere Mannschaften gesehen in Europa nach diese Mittwoch. Ich habe gesehen auch zwei Tage die Training. Ein Trainer ist nicht ein Idiot! Ein Trainer sei sehen was passieren in Platz. In diese Spiel es waren zwei, drei diese Spieler waren schwach wie eine Flasche leer! Haben Sie gesehen Mittwoch, welche Mannschaft hat gespielt Mittwoch?
+      </p>
+            </Grid.Col>
+          </Grid.Row>
+        </Grid>
+      </Section>
+    </motion.div >
   )
 }
 
